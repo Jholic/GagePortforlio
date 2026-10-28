@@ -1290,6 +1290,17 @@ DASHBOARD_V3_HTML_TEMPLATE = r"""<!DOCTYPE html>
 """
 
 
+def nan_to_null(obj):
+    """브라우저 JSON.parse는 NaN/Infinity를 거부하므로 직렬화 전에 None(null)으로 바꿉니다."""
+    if isinstance(obj, float):
+        return None if obj != obj or obj in (float("inf"), float("-inf")) else obj
+    if isinstance(obj, dict):
+        return {k: nan_to_null(v) for k, v in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [nan_to_null(v) for v in obj]
+    return obj
+
+
 def generate_v3_dashboards(
     bundle_path: str = "logs_v3/v3_webapp_bundle.json",
     out_paths: Tuple[str, ...] = ("index.html", "krx_dashboard.html"),
@@ -1298,7 +1309,9 @@ def generate_v3_dashboards(
         bundle = json.load(f)
 
     # JSON 직렬화 시 공백 최소화하여 파일 크기 최적화
-    compact_json = json.dumps(bundle, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    compact_json = json.dumps(
+        nan_to_null(bundle), ensure_ascii=False, separators=(",", ":"), allow_nan=False
+    ).replace("</", "<\\/")
     html_doc = DASHBOARD_V3_HTML_TEMPLATE.replace("__V3_BUNDLE_JSON__", compact_json)
 
     saved = []

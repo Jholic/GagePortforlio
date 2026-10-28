@@ -40,6 +40,8 @@ import numpy as np
 import pandas as pd
 from scipy import linalg, stats
 
+from build_v3_dashboard import nan_to_null
+
 warnings.filterwarnings("ignore")
 
 
@@ -1741,7 +1743,7 @@ def export_v3_payloads(
     }
     out_path = os.path.join(log_dir, "v3_webapp_bundle.json")
     with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(bundle, f, ensure_ascii=False)
+        json.dump(nan_to_null(bundle), f, ensure_ascii=False, allow_nan=False)
     print(f"[Bundle Saved v3] 웹앱 및 차트 시계열 데이터 번들 저장 완료: '{out_path}'")
     return out_path
 

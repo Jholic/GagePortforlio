@@ -21,14 +21,14 @@ from urllib.parse import urlparse, parse_qs
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 from main_v3 import LocalQuantStore, run_v3_pipeline
-from build_v3_dashboard import generate_v3_dashboards
+from build_v3_dashboard import generate_v3_dashboards, nan_to_null
 
 
 class QuantWebAppHandler(SimpleHTTPRequestHandler):
     db_path = "data/krx_quant_store.db"
 
     def _send_json(self, data: object, status: int = 200) -> None:
-        raw = json.dumps(data, ensure_ascii=False).encode("utf-8")
+        raw = json.dumps(nan_to_null(data), ensure_ascii=False, allow_nan=False).encode("utf-8")
         self.send_response(status)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(raw)))
