@@ -1,0 +1,13 @@
+[build]
+  publish = "."
+  command = "echo 'Static bundle ready for Netlify deployment'"
+
+[[redirects]]
+  from = "/dashboard"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

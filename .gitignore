@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+logs/scheduler/.lock
+data/*.db-shm
+data/*.db-wal

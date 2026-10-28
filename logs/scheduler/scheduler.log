@@ -1,0 +1,15 @@
+2026-10-25 19:36:30 OK status=0 manual baseline (logs/scheduler/manual_baseline_2026-10-25.log)
+2026-10-25 19:36:42 START /Users/jabiseu/project/PROJECT/AUTO_PORTFOLIO/logs/scheduler/run_2026-10-25_193642.log
+2026-10-25 19:37:19 OK status=0 dashboard=logs/dashboards/krx_dashboard_2026-10-25.html
+2026-10-25 19:39:33 CONFIG 실행 주기 1개월 -> 3개월 변경 (com.jabiseu.autoportfolio.quarterly)
+2026-10-25 19:39:33 START /Users/jabiseu/project/PROJECT/AUTO_PORTFOLIO/logs/scheduler/run_2026-10-25_193933.log
+2026-10-25 19:40:12 OK status=0 dashboard=logs/dashboards/krx_dashboard_2026-10-25.html
+2026-10-25 19:41:50 START /Users/jabiseu/project/PROJECT/AUTO_PORTFOLIO/logs/scheduler/run_2026-10-25_194150.log
+2026-10-25 19:42:29 OK status=0 dashboard=logs/dashboards/krx_dashboard_2026-10-25.html
+2026-10-25 23:00:02 CONFIG main_v2.py를 정기 실행에 추가 (v1 → v2 순서, 버전별 성공일 관리)
+2026-10-25 23:00:03 START v2 /Users/jabiseu/project/PROJECT/AUTO_PORTFOLIO/logs/scheduler/run_2026-10-25_230003_v2.log
+2026-10-25 23:00:26 OK v2 status=0
+2026-10-25 23:00:26 DASHBOARD logs/dashboards/krx_dashboard_2026-10-25.html (갱신: v2)
+2026-10-25 23:00:33 START v1 /Users/jabiseu/project/PROJECT/AUTO_PORTFOLIO/logs/scheduler/run_2026-10-25_230033_v1.log
+2026-10-25 23:01:11 OK v1 status=0
+2026-10-25 23:01:11 DASHBOARD logs/dashboards/krx_dashboard_2026-10-25.html (갱신: v1)
